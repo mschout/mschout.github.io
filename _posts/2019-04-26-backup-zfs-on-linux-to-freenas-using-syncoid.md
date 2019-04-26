@@ -2,6 +2,13 @@
 layout: post
 title: "Backup ZFS on Linux to FreeNAS using Syncoid"
 date: "2019-04-26 11:19:10 -0500"
+tags:
+  - linux
+  - freebsd
+  - freenas
+  - zfs
+  - backup
+  - sysadmin
 ---
 
 ## Introduction
