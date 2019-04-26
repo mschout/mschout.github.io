@@ -75,7 +75,14 @@ For example:
 zfs create pool/zfs/somehostname
 ```
 
-You could do this through the FreNAS UI, but I prefer the CLI.
+You could do this through the FreeNAS UI, but I prefer the CLI.
+
+Note also that your default shell on FreeNAS needs to be `/bin/sh` because
+`syncoid` does not work with the default `csh`.  So possibly you also need:
+
+```shell
+chsh -s /bin/sh
+```
 
 ### On the machine to back up
 
