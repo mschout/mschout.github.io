@@ -39,27 +39,27 @@ For automatic snapshots, I use
 [zfs-auto-snapshot](https://github.com/zfsonlinux/zfs-auto-snapshot) to keep a
 set of snapshots on my machines automatically with varying frequences (e.g. 1
 days worth of hourly snapshots, 1 month of weekly snapshots etc).  My
-requements where to replicate my `zroot` pool and all of its snapshots to a ZFS
+requirements were to replicate my `zroot` pool and all of its snapshots to a ZFS
 pool on FreeNAS, keeping all of the snapshots, plus keeping older snapshots on
 FreeNAS.
 
 ## Encryption
 
-My FreeNAS drives are all `geli` encrypted.  I do not care if the actual
-backups themselves are encrypted.  My main concern is that if a disk fails and
-I need to get rid of it, or if I wish to sell it to upgrade the disk, no
-information will be compromised, and `geli` device level encryption solves this.
+My FreeNAS drives are all `geli` encrypted.  I do not need encrypted backups.
+My main concern is that if a disk fails and I need to get rid of it, or if I
+wish to sell it to upgrade the disk, no information will be compromised, and
+`geli` device level encryption solves this.
 
 ## Options
 
-ZFS comes with built in tools to replicate itself via `zfs send` and `zfs
-recv`, either incrementally or in full to another system.  These tools are very
-low level however, and some plumbing around these tools is ideal.  I evaluated
-several tools to replicate snapshots including:
+ZFS comes with built in tools to replicate itself via `zfs send` and
+`zfs recv`, either incrementally or in full to another system.  These tools are
+very low level however, and some plumbing around these tools is ideal.  I
+evaluated several tools to replicate snapshots including:
 
 - [znapzend](https://www.znapzend.org/)
 - [zfsbackup-go](https://github.com/someone1/zfsbackup-go)
-- [zrep](www.bolthole.com/solaris/zrep)
+- [zrep](http://www.bolthole.com/solaris/zrep)
 - [zetaback](https://github.com/omniti-labs/zetaback)
 - [syncoid](https://github.com/jimsalterjrs/sanoid)
 
@@ -120,7 +120,7 @@ The first time this runs, it will do a full backup.  Subsequent runs will only
 do an incremental backup from the last run.  In addition, if the backup is
 interrupted, the next run will resume where it left off.
 
-Thats it.  Everything just works.
+That's it.  Everything just works.
 
 Ideally, you don't want to run backups manually though.  You could hook this up
 to `cron` for example.   I hooked it up to `systemd` using the `OnCalendar`
